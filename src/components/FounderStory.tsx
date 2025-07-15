@@ -57,10 +57,10 @@ const FounderStory = () => {
             
             {/* Image container with original aspect ratio */}
             <div className="w-full lg:w-6/12 order-1 lg:order-2">
-              <div className="relative w-full" style={{ paddingBottom: '73.45%' }}> {/* 1469/2000 = 0.7345 = 73.45% */}
+              <div className="relative w-full" style={{ paddingBottom: '83%' }}> {/* 1660/2000 = 0.83 = 83% */}
                 <div className="absolute inset-0 rounded-lg overflow-hidden">
                   <Image
-                    src="/images/illustration.png"
+                    src="/images/illustration2.png"
                     alt="AI Companion Illustration"
                     fill
                     className="object-contain"
