@@ -6,16 +6,16 @@ import { useInView } from 'react-intersection-observer';
 
 const faqs = [
   {
-    question: "How is this different from ChatGPT?",
-    answer: "ChatGPT requires you to copy/paste and manually execute tasks. Companion actually performs computer actions for you - clicking buttons, filing documents, managing applications."
+    question: "How is this different from other LLMs",
+    answer: "Other LLMs requires you to copy/paste and manually execute tasks. Companion actually performs computer actions for you - clicking buttons, filing documents, managing applications."
   },
   {
     question: "Is my data secure?",
-    answer: "Absolutely. Companion runs locally on your computer. No personal data is transmitted without your explicit consent."
+    answer: "Absolutely. Companion runs entirely on your local machine — nothing is sent to the cloud unless you choose to. All data is processed locally and protected with encryption, ensuring your information stays private and secure."
   },
   {
     question: "What if I use Mac or Linux?",
-    answer: "Currently Windows-only, but Mac support is coming Q2 2025. Linux support planned for Q4 2025."
+    answer: "Companion is currently Windows-only, but Mac support is just a few weeks away. Linux is on our roadmap and coming as soon as possible."
   },
   {
     question: "How easy is it to set up MCP integration?",

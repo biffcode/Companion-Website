@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { FiDollarSign, FiClock } from 'react-icons/fi';
 
 const benefits = [
   '10-20 hours saved weekly on average',
@@ -13,20 +14,24 @@ const benefits = [
 ];
 
 const TimeValueSection = () => {
-  const [hoursPerWeek, setHoursPerWeek] = useState(15);
-  const [hourlyRate, setHourlyRate] = useState(50);
+  const [hoursSaved, setHoursSaved] = useState(5);
+  const [hourlyRate, setHourlyRate] = useState(25);
+  const [monthlySavings, setMonthlySavings] = useState(500);
+  const [daysPerYear, setDaysPerYear] = useState(10);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  // Calculate annual savings
-  const annualSavings = hoursPerWeek * hourlyRate * 52;
-  const formattedSavings = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0,
-  }).format(annualSavings);
+  useEffect(() => {
+    // Calculate monthly savings (exactly 4 weeks per month)
+    const monthly = hoursSaved * hourlyRate * 4;
+    setMonthlySavings(monthly);
+    
+    // Calculate days per year (hours saved per week × 4 weeks × 12 months) / 24 hours per day
+    const days = (hoursSaved * 4 * 12) / 24;
+    setDaysPerYear(days);
+  }, [hoursSaved, hourlyRate]);
 
   return (
     <section className="section bg-background">
@@ -38,14 +43,14 @@ const TimeValueSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-title mb-4">Reclaim Your Most Valuable Asset Through Computer Automation!</h2>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Stop doing what computers should do for you - let our agentic AI framework handle workflow automation while you focus on what matters most
+          <h2 className="text-title mb-4">Get Your Time Back!</h2>
+          <p className="text-xl text-text-secondary max-w-4xl mx-auto">
+            Companion does boring computer work for you, so you can do the fun stuff instead
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Calculator */}
+          {/* ROI Calculator */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
@@ -54,42 +59,83 @@ const TimeValueSection = () => {
           >
             <h3 className="text-xl font-bold text-title mb-6">Calculate Your Savings</h3>
             
-            <div className="mb-6">
-              <label className="block text-text-secondary mb-2">
-                Hours spent on repetitive tasks weekly
-              </label>
-              <div className="flex items-center">
+            <div className="space-y-10">
+              <div>
+                <div className="flex justify-between items-center mb-3">
+                  <label htmlFor="hours-saved" className="text-lg font-medium text-text-secondary flex items-center">
+                    <FiClock className="mr-2 text-brand" />
+                    Hours saved per week
+                  </label>
+                  <span className="text-xl font-semibold text-brand">{hoursSaved}</span>
+                </div>
                 <input
                   type="range"
+                  id="hours-saved"
                   min="5"
                   max="40"
-                  value={hoursPerWeek}
-                  onChange={(e) => setHoursPerWeek(parseInt(e.target.value))}
+                  step="1"
+                  value={hoursSaved}
+                  onChange={(e) => setHoursSaved(parseInt(e.target.value))}
                   className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-brand"
                 />
-                <span className="ml-4 w-12 text-text-primary font-medium">{hoursPerWeek}</span>
+                <div className="flex justify-between text-sm text-text-secondary mt-2">
+                  <span>5 hours</span>
+                  <span>40 hours</span>
+                </div>
+              </div>
+              
+              <div>
+                <div className="flex justify-between items-center mb-3">
+                  <label htmlFor="hourly-rate" className="text-lg font-medium text-text-secondary flex items-center">
+                    <FiDollarSign className="mr-2 text-brand" />
+                    Your hourly rate
+                  </label>
+                  <span className="text-xl font-semibold text-brand">${hourlyRate}</span>
+                </div>
+                <input
+                  type="range"
+                  id="hourly-rate"
+                  min="10"
+                  max="500"
+                  step="1"
+                  value={hourlyRate}
+                  onChange={(e) => setHourlyRate(parseInt(e.target.value))}
+                  className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-brand"
+                />
+                <div className="flex justify-between text-sm text-text-secondary mt-2">
+                  <span>$10</span>
+                  <span>$500</span>
+                </div>
               </div>
             </div>
             
-            <div className="mb-8">
-              <label className="block text-text-secondary mb-2">
-                Your hourly value ($)
-              </label>
-              <input
-                type="number"
-                min="10"
-                max="500"
-                value={hourlyRate}
-                onChange={(e) => setHourlyRate(parseInt(e.target.value))}
-                className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand"
-              />
-            </div>
-            
-            <div className="bg-neutral-100 p-6 rounded-lg">
-              <div className="text-center">
-                <div className="text-sm text-text-secondary mb-1">Annual savings with Companion</div>
-                <div className="text-4xl font-bold text-brand">{formattedSavings}</div>
-              </div>
+            <div className="bg-neutral-100 p-6 rounded-lg mt-8">
+              <motion.div
+                key={monthlySavings}
+                initial={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+                className="mb-6"
+              >
+                <div className="text-lg text-text-secondary mb-1">You save</div>
+                <div className="text-4xl font-bold text-brand">
+                  ${monthlySavings.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                  <span className="text-xl font-normal text-text-secondary ml-2">per month</span>
+                </div>
+              </motion.div>
+              
+              <motion.div
+                key={daysPerYear}
+                initial={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="text-lg text-text-secondary mb-1">That's</div>
+                <div className="text-4xl font-bold text-brand">
+                  {daysPerYear.toLocaleString('en-US', { maximumFractionDigits: 1 })}
+                </div>
+                <div className="text-xl font-normal text-text-secondary mt-1">days of your life back per year</div>
+              </motion.div>
             </div>
           </motion.div>
           
@@ -122,7 +168,7 @@ const TimeValueSection = () => {
                 </div>
                 <div>
                   <div className="text-sm text-text-secondary">Return on Investment</div>
-                  <div className="text-lg font-medium text-text-primary">ROI achieved within first month for 89% of users</div>
+                  <div className="text-lg font-medium text-text-primary">Whether you earn $10 or $500 an hour, you'll see real return on time saved — faster than you'd expect.</div>
                 </div>
               </div>
             </div>

@@ -7,22 +7,64 @@ import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 
 const demos = [
   {
-    id: 'email',
-    title: 'Email Management',
-    description: 'Transform your inbox into a productivity powerhouse with intelligent email automation. Companion automatically categorizes incoming emails, prioritizes important messages, and drafts contextual responses based on your communication style. Set up custom rules for different types of emails - from client inquiries to internal communications - and watch as routine follow-ups, meeting confirmations, and status updates are handled seamlessly. The system learns from your email patterns and preferences, ensuring that urgent matters are escalated while routine correspondence is managed efficiently in the background.',
-    videoSrc: '/videos/Hero_Video.mp4',
+    id: 'finding-leads',
+    title: 'Finding Leads',
+    description: 'Find new customers for your business. Companion looks through websites and social media to find people who might want to buy from you. It saves their contact info and helps you reach out to them.',
+    videoSrc: '/videos/Finding_Leads.mp4',
   },
   {
-    id: 'file-organizer',
-    title: 'File Organizer',
-    description: 'Say goodbye to digital chaos with our intelligent file organization system. Companion automatically sorts, renames, and categorizes files across your entire digital workspace using advanced pattern recognition and machine learning. Whether it\'s organizing project documents by client and date, sorting images by content and quality, or managing downloads into appropriate folders, the system creates a logical structure that makes sense for your workflow. Set custom naming conventions, establish folder hierarchies, and define rules based on file type, content, creation date, or even metadata. The AI continuously learns from your preferences to maintain an organized, searchable file system that saves hours of manual sorting.',
-    videoSrc: '/videos/File Organization.mp4',
+    id: 'research',
+    title: 'Research',
+    description: 'Get information fast. Companion searches many websites at once to find what you need. It reads through lots of pages and gives you the important parts in simple summaries.',
+    videoSrc: '/videos/Research.mp4',
   },
   {
-    id: 'data-processing',
-    title: 'Data Processing',
-    description: 'Unlock the power of your data with sophisticated extraction, transformation, and loading capabilities that work across any format or source. Companion can process everything from complex spreadsheets and databases to PDFs, images, and web content. The system automatically identifies data patterns, cleans inconsistencies, validates entries, and transforms information into your desired format. Whether you\'re consolidating customer data from multiple sources, generating reports from raw analytics, or converting legacy documents into modern formats, Companion handles the heavy lifting. Advanced features include data validation, duplicate detection, format standardization, and intelligent field mapping that adapts to various data structures.',
-    videoSrc: '/videos/Data Processing.mp4',
+    id: 'writing-reports',
+    title: 'Writing Reports',
+    description: 'Turn your ideas into nice reports. Give Companion your notes and it will write them up properly with good formatting. Perfect for work presentations or school papers.',
+    videoSrc: '/videos/writing_Report.mp4',
+  },
+  {
+    id: 'managing-emails',
+    title: 'Managing Emails',
+    description: 'Keep your inbox clean and organized. Companion sorts your emails, answers simple ones for you, and makes sure you see the important messages first.',
+    videoSrc: '/videos/managing_email.mp4',
+  },
+  {
+    id: 'setting-up-meetings',
+    title: 'Setting up Meetings',
+    description: 'Schedule meetings without the hassle. Companion checks when everyone is free, picks the best times, and sends out invitations. No more back-and-forth emails.',
+    videoSrc: '/videos/setup_meeting.mp4',
+  },
+  {
+    id: 'organizing-files',
+    title: 'Organizing Files',
+    description: 'Keep your computer files neat and tidy. Companion puts files in the right folders, gives them good names, and helps you find things quickly when you need them.',
+    videoSrc: '/videos/organizing_files.mp4',
+  },
+  {
+    id: 'computer-security',
+    title: 'Computer Security',
+    description: 'Watch for bad things trying to get into your computer. Companion looks for viruses, hackers, and other dangerous stuff. It tells you right away if something suspicious is happening.',
+    videoSrc: '/videos/computer_security.mp4',
+  },
+  {
+    id: 'social-media-management',
+    title: 'Social Media Management',
+    description: 'Make social media easy. Companion helps you post at the right times, answers comments, and keeps track of what people are saying about you online.',
+    videoSrc: '/videos/social_media.mp4',
+  },
+  {
+    id: 'ai-collaboration',
+    title: 'AI Collaboration',
+    description: 'Work better with AI helpers. Companion connects you to different AI tools and makes them work together. It helps you get better results from ChatGPT and other AI apps.',
+    videoSrc: '/videos/AI_Colaboration.mp4',
+  },
+  {
+    id: 'installing-removing-apps',
+    title: 'Installing and Removing Apps',
+    description: 'Add and remove programs safely. Companion finds the right software for you, installs it properly, and removes programs completely when you don\'t need them anymore.',
+    videoSrc: '/videos/Instaling_software.mp4',
   },
 ];
 
@@ -42,7 +84,7 @@ const DemoSection = () => {
   };
 
   return (
-    <section id="demo" className="section bg-neutral-50">
+    <section id="demo" className="section bg-neutral-50 py-16">
       <div className="container">
         <motion.div
           ref={ref}
@@ -57,20 +99,11 @@ const DemoSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-medium p-2 aspect-video flex flex-col">
-              <div className="bg-neutral-100 rounded-t-md h-7 flex items-center px-3">
-                <div className="flex space-x-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-neutral-300"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-neutral-300"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-neutral-300"></div>
-                </div>
-                <div className="ml-3 text-sm font-medium text-text-secondary">
-                  {activeDemoData?.title}
-                </div>
-              </div>
-              <div className="bg-neutral-900 rounded-b-md flex-grow flex items-center justify-center overflow-hidden relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Video Display Area */}
+          <div className="lg:col-span-7 order-2 lg:order-1">
+            <div className="bg-white rounded-lg shadow-medium overflow-hidden">
+              <div className="bg-neutral-900 flex items-center justify-center overflow-hidden relative aspect-video">
                 <AnimatePresence mode="wait">
                   {activeDemoData && (
                     <motion.video
@@ -79,7 +112,7 @@ const DemoSection = () => {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="w-full h-full object-cover absolute top-0 left-0"
+                      className="w-full h-full object-cover"
                       loop
                       muted
                       autoPlay
@@ -92,72 +125,59 @@ const DemoSection = () => {
                 </AnimatePresence>
               </div>
             </div>
+            
+            {/* Description Panel */}
+            {activeDemoData && (
+              <motion.div
+                key={activeDemoData.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="mt-6 bg-brand text-white p-6 rounded-lg shadow-medium"
+              >
+                <h3 className="text-xl font-bold mb-3 text-white">{activeDemoData.title}</h3>
+                <p className="text-white/90">{activeDemoData.description}</p>
+              </motion.div>
+            )}
           </div>
 
-          <div className="flex flex-col space-y-2">
-            {demos.map((demo) => (
-              <div
-                key={demo.id}
-                className={`rounded-lg transition-all overflow-hidden ${
-                  activeDemo === demo.id
-                    ? 'bg-brand text-white shadow-medium'
-                    : 'bg-white hover:bg-neutral-100 hover:shadow-medium'
-                }`}
-              >
-                <button
-                  onClick={() => handleDemoClick(demo.id)}
-                  className="w-full text-left p-4 flex items-center justify-between"
-                >
-                  <h3 className={`text-lg font-bold ${
-                    activeDemo === demo.id ? 'text-white' : 'text-title'
-                  }`}>
-                    {demo.title}
-                  </h3>
-                  <div className={`transition-transform duration-200 ${
-                    expandedDemo === demo.id ? 'rotate-0' : 'rotate-0'
-                  }`}>
-                    {expandedDemo === demo.id ? (
-                      <IoChevronUp className={`w-5 h-5 ${
-                        activeDemo === demo.id ? 'text-white' : 'text-text-secondary'
-                      }`} />
-                    ) : (
-                      <IoChevronDown className={`w-5 h-5 ${
-                        activeDemo === demo.id ? 'text-white' : 'text-text-secondary'
-                      }`} />
-                    )}
-                  </div>
-                </button>
-                
-                <AnimatePresence>
-                  {expandedDemo === demo.id && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-4 pb-4">
-                        <p className={`text-sm ${
-                          activeDemo === demo.id ? 'text-white/80' : 'text-text-secondary'
-                        }`}>
-                          {demo.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+          {/* Use Case Selection Area */}
+          <div className="lg:col-span-5 order-1 lg:order-2">
+            <div className="bg-white rounded-lg shadow-medium p-4">
+              <h3 className="text-lg font-bold text-title mb-4">Use Cases</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
+                {demos.map((demo) => (
+                  <button
+                    key={demo.id}
+                    onClick={() => handleDemoClick(demo.id)}
+                    className={`text-left p-3 rounded-lg transition-all ${
+                      activeDemo === demo.id
+                        ? 'bg-brand text-white shadow-sm'
+                        : 'bg-neutral-50 hover:bg-neutral-100'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <h4 className={`font-medium ${
+                        activeDemo === demo.id ? 'text-white' : 'text-title'
+                      }`}>
+                        {demo.title}
+                      </h4>
+                      {activeDemo === demo.id && (
+                        <div className="w-2 h-2 rounded-full bg-white"></div>
+                      )}
+                    </div>
+                  </button>
+                ))}
               </div>
-            ))}
-
-            <a 
-              href="https://www.youtube.com/@companionbyaios" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn-primary mt-4 text-center"
-            >
-              Explore More
-            </a>
+              <a 
+                href="https://www.youtube.com/@companionbyaios" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-primary w-full text-center mt-4"
+              >
+                Explore More
+              </a>
+            </div>
           </div>
         </div>
       </div>

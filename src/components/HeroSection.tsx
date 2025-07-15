@@ -5,8 +5,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
 const HeroSection = () => {
-  const firstPart = 'Meet Companion: ';
-  const secondPart = 'Your Personal Computer Assistant';
+  const firstPart = 'Meet Companion:';
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -29,26 +28,27 @@ const HeroSection = () => {
             className="flex flex-col space-y-6 lg:col-span-5"
           >
             <h1 className="text-title">
-              <span className="inline-block">{firstPart}</span>
-              <span className="text-brand inline-block">{secondPart}</span>
+              <span className="inline-block">{firstPart}</span><br />
+              <span className="text-brand inline-block">Your Personal</span><br />
+              <span className="text-brand inline-block">AI Assistant</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-text-secondary">
-              The first artificial intelligence assistant that actually uses your computer through advanced computer automation - clicking, typing, and navigating just like you would, but 10x faster
+            Companion can actually use your computer — clicking, typing, and navigating any app, just like a human.
             </p>
             
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {[
-                'Native desktop app with direct OS access for complete computer use',
-                'Seamless workflow automation with your existing tools and processes',
-                'Easiest MCP server integration and tool use setup on the market',
-                'Advanced agentic framework saves 10+ hours weekly on repetitive tasks'
+                'Works like a real assistant — right on your computer',
+                'Fits into your existing workflow — no changes needed',
+                'Set up in minutes, not days',
+                'Reclaim 10+ hours a week from repetitive work'
               ].map((point, index) => (
                 <li key={index} className="flex items-start">
-                  <svg className="w-5 h-5 text-brand mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-6 h-6 text-brand mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-text-secondary">{point}</span>
+                  <span className="text-text-secondary text-lg md:text-xl font-medium">{point}</span>
                 </li>
               ))}
             </ul>

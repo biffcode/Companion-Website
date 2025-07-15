@@ -5,8 +5,8 @@ import { useInView } from 'react-intersection-observer';
 
 const features = [
   {
-    title: 'Native Computer Access & Control',
-    description: 'True computer automation through direct OS integration, not browser-limited. Perfect for developers managing deployments, business owners scaling operations, and professionals automating complex workflows across any Windows application.',
+    title: 'Works on Your Computer',
+    description: 'Companion works directly on your computer. It can use any app you have - old or new. No special setup needed.',
     icon: (
       <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -14,8 +14,8 @@ const features = [
     ),
   },
   {
-    title: 'Personal Context Awareness',
-    description: 'Learns your workflows and preferences. Remembers your projects and priorities.',
+    title: 'Learns How You Work',
+    description: 'Companion watches and learns your habits. It remembers what you like and how you work. This helps it do things the way you want.',
     icon: (
       <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -23,8 +23,8 @@ const features = [
     ),
   },
   {
-    title: 'Multi-AI Framework',
-    description: 'Works with Claude, GPT, Gemini, and more. Stop paying for 10 different AI subscriptions - Companion does it all in one, while our token optimization saves you 40% on costs.',
+    title: 'Many Smart Helpers in One',
+    description: 'Use different AI helpers like ChatGPT and Claude all in one place. No need to switch between apps. Save money too.',
     icon: (
       <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -32,8 +32,8 @@ const features = [
     ),
   },
   {
-    title: 'Easiest MCP Integration',
-    description: 'Set up MCP servers in just a few clicks. No other solution makes integration this simple.',
+    title: 'Connect with All Your Apps',
+    description: 'Hook up all your favorite apps in just a few minutes. We make it super easy. No computer skills needed.',
     icon: (
       <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
@@ -81,9 +81,10 @@ const FeaturesSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-title mb-4">Why Companion's Computer Automation Changes Everything</h2>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Unlike chatbots or browser tools, our agentic AI framework lives on your computer and actually performs workflow automation tasks for you through advanced artificial intelligence and computer use technology
+          <h2 className="text-title mb-4">Why Companion Is So Special and Helpful</h2>
+          <p className="text-xl text-text-secondary max-w-6xl mx-auto">
+            Companion is different from chat apps or website tools. It lives on your computer <br />
+            and actually does your work for you using smart computer technology.
           </p>
         </motion.div>
 

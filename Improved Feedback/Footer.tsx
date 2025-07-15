@@ -34,8 +34,8 @@ const Footer = () => {
             </p>
             <div className="flex items-center mb-4">
               <FiMail size={16} className="text-secondary-400 mr-2" />
-              <a href="mailto:aioscompanion@blackcode.ch" className="text-secondary-400 hover:text-secondary-500 transition-colors text-sm">
-                aioscompanion@blackcode.ch
+              <a href="mailto:contact@aioscompanion.com" className="text-secondary-400 hover:text-secondary-500 transition-colors text-sm">
+                contact@aioscompanion.com
               </a>
             </div>
             <div className="flex space-x-5">

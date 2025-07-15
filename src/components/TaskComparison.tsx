@@ -19,9 +19,9 @@ const TaskComparison = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="mb-6 text-title">Transform Your Workflow Automation</h2>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Our agentic AI framework handles routine computer automation tasks automatically, freeing professionals, developers, and business owners to focus on high-value strategic work through intelligent workflow automation
+          <h2 className="mb-6 text-title">Transform Your Workflow</h2>
+          <p className="text-xl text-text-secondary max-w-4xl mx-auto">
+          Companion takes care of repetitive computer tasks for you, so you can focus on more important work that actually moves things forward.
           </p>
         </motion.div>
         

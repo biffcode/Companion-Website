@@ -21,7 +21,7 @@ const Availability = () => {
               Platform Availability
             </h2>
             <p className="text-xl text-text-secondary">
-              AIOS Companion is expanding to all major platforms
+              Companion is expanding to all major platforms
             </p>
           </div>
           
@@ -70,7 +70,7 @@ const Availability = () => {
                 <h3 className="text-xl font-semibold text-title mb-2">macOS</h3>
                 <div className="flex items-center justify-center mb-4 text-amber-500">
                   <FiClock className="mr-2" />
-                  <span>Coming Soon</span>
+                  <span>Coming Very Soon</span>
                 </div>
                 <p className="text-text-secondary mb-6">
                   We're working hard to bring the full experience to Mac users

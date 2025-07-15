@@ -7,16 +7,16 @@ import Link from 'next/link';
 const plans = [
   {
     name: 'Preview Pass',
-    price: '$5',
-    period: 'one-time',
+    price: 'Free',
+    period: '',
     features: [
-      '$5 credits (expire in 7 days)',
+      'Free credits (expire in 7 days)',
       'Access to Google Gemini only',
       'All features included',
       'Community Support',
     ],
-    cta: 'Get Started',
-    popular: false,
+    cta: 'Try for Free',
+    popular: true,
   },
   {
     name: 'Basic',
@@ -42,7 +42,7 @@ const plans = [
       'Priority Email Support',
     ],
     cta: 'Subscribe Now',
-    popular: true,
+    popular: false,
   },
   {
     name: 'Pro',
@@ -88,7 +88,7 @@ const PricingSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative rounded-lg overflow-hidden transform transition-transform duration-300 ${
+              className={`relative rounded-lg overflow-hidden transform transition-transform duration-300 h-full flex flex-col ${
                 plan.popular
                   ? 'border-2 border-brand shadow-medium scale-105'
                   : 'border border-neutral-200 shadow-soft'
@@ -96,18 +96,18 @@ const PricingSection = () => {
             >
               {plan.popular && (
                 <div className="absolute top-0 right-0 bg-brand text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                  MOST POPULAR
+                  GET NOW!
                 </div>
               )}
               
-              <div className="p-6 bg-white">
+              <div className="p-6 bg-white flex flex-col h-full">
                 <h3 className="text-xl font-bold text-title mb-2">{plan.name}</h3>
                 <div className="flex items-baseline mb-6">
                   <span className="text-3xl font-bold text-text-primary">{plan.price}</span>
                   <span className="text-text-secondary ml-1">{plan.period}</span>
                 </div>
                 
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-4 mb-8 flex-grow">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start">
                       <svg className="w-5 h-5 text-brand mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -120,7 +120,7 @@ const PricingSection = () => {
                 
                 <Link
                   href="/download"
-                  className={`w-full block text-center py-3 px-4 rounded-md transition-colors font-medium ${
+                  className={`w-full block text-center py-3 px-4 rounded-md transition-colors font-medium mt-auto ${
                     plan.popular
                       ? 'btn-primary'
                       : 'bg-neutral-100 text-text-primary hover:bg-neutral-200'

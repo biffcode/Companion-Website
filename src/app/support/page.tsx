@@ -4,6 +4,8 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { FiSearch, FiMessageSquare, FiBookOpen, FiHelpCircle, FiCheckCircle } from 'react-icons/fi';
 import Link from 'next/link';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 type CategoryType = 'all' | 'general' | 'installation' | 'features' | 'billing' | 'troubleshooting';
 
@@ -14,9 +16,77 @@ interface FormData {
   message: string;
 }
 
+// FAQ data from main page
+const faqs = [
+  {
+    question: "How is this different from other LLMs",
+    answer: "Other LLMs requires you to copy/paste and manually execute tasks. Companion actually performs computer actions for you - clicking buttons, filing documents, managing applications."
+  },
+  {
+    question: "Is my data secure?",
+    answer: "Absolutely. Companion runs entirely on your local machine — nothing is sent to the cloud unless you choose to. All data is processed locally and protected with encryption, ensuring your information stays private and secure."
+  },
+  {
+    question: "What if I use Mac or Linux?",
+    answer: "Companion is currently Windows-only, but Mac support is just a few weeks away. Linux is on our roadmap and coming as soon as possible."
+  },
+  {
+    question: "How easy is it to set up MCP integration?",
+    answer: "Incredibly simple. Our solution lets you set up MCP servers in just a few clicks - the easiest integration on the market. No complex configuration or technical expertise required."
+  },
+  {
+    question: "Do I need technical skills?",
+    answer: "No programming required. If you can describe a task in plain English, Companion can likely automate it."
+  },
+  {
+    question: "What happens if AI makes a mistake?",
+    answer: "Companion asks for confirmation on potentially risky actions and maintains a full audit log of all activities."
+  }
+];
+
+const FaqItem = ({ faq, index, isOpen, toggleOpen }: { 
+  faq: typeof faqs[0], 
+  index: number, 
+  isOpen: boolean, 
+  toggleOpen: () => void 
+}) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="border-b border-neutral-200 last:border-b-0"
+    >
+      <button
+        className="w-full py-6 flex justify-between items-center text-left focus:outline-none group"
+        onClick={toggleOpen}
+      >
+        <h3 className="text-lg font-medium text-secondary-500 group-hover:text-primary-500 transition-colors">{faq.question}</h3>
+        <svg
+          className={`w-5 h-5 text-secondary-400 transform transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      
+      <div
+        className={`overflow-hidden transition-all duration-300 ${
+          isOpen ? 'max-h-96 pb-6' : 'max-h-0'
+        }`}
+      >
+        <p className="text-secondary-400">{faq.answer}</p>
+      </div>
+    </motion.div>
+  );
+};
+
 const SupportPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<CategoryType>('all');
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -29,8 +99,8 @@ const SupportPage = () => {
     setSearchQuery(e.target.value);
   };
 
-  const handleCategoryChange = (category: CategoryType) => {
-    setSelectedCategory(category);
+  const toggleFaq = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
   };
 
   const handleFormChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -56,21 +126,16 @@ const SupportPage = () => {
     }, 3000);
   };
 
-  // Filter FAQs based on search query and category
+  // Filter FAQs based on search query
   const filteredFaqs = faqs.filter(faq => {
-    const matchesSearch = 
-      searchQuery === '' || 
+    return searchQuery === '' || 
       faq.question.toLowerCase().includes(searchQuery.toLowerCase()) || 
       faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const matchesCategory = 
-      selectedCategory === 'all' || 
-      faq.category === selectedCategory;
-    
-    return matchesSearch && matchesCategory;
   });
 
   return (
+    <>
+      <Header />
     <div className="pt-32 pb-24">
       <div className="container mx-auto px-6">
         {/* Header */}
@@ -166,33 +231,10 @@ const SupportPage = () => {
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-secondary-400 max-w-3xl mx-auto">
-              Find answers to the most common questions about Companion.
+                Everything you need to know about Companion AI
             </p>
           </motion.div>
 
-          {/* Category Filters */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-4 mb-12"
-          >
-            {categories.map((category) => (
-              <button
-                key={category.value}
-                onClick={() => handleCategoryChange(category.value)}
-                className={`px-6 py-2 rounded-full transition-colors ${
-                  selectedCategory === category.value
-                    ? 'bg-primary-500 text-white'
-                    : 'bg-gray-100 text-secondary-400 hover:bg-gray-200'
-                }`}
-              >
-                {category.label}
-              </button>
-            ))}
-          </motion.div>
-
-          {/* FAQ Items */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -200,18 +242,15 @@ const SupportPage = () => {
             className="max-w-3xl mx-auto"
           >
             {filteredFaqs.length > 0 ? (
-              <div className="space-y-6">
+                <div className="bg-white rounded-lg shadow-medium p-6">
                 {filteredFaqs.map((faq, index) => (
-                  <motion.div
+                    <FaqItem
                     key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="bg-white rounded-apple-lg shadow-apple p-6"
-                  >
-                    <h3 className="text-xl font-semibold text-secondary-500 mb-2">{faq.question}</h3>
-                    <p className="text-secondary-400">{faq.answer}</p>
-                  </motion.div>
+                      faq={faq}
+                      index={index}
+                      isOpen={openIndex === index}
+                      toggleOpen={() => toggleFaq(index)}
+                    />
                 ))}
               </div>
             ) : (
@@ -235,9 +274,30 @@ const SupportPage = () => {
             <h2 className="text-3xl font-bold text-secondary-500 mb-6">
               Contact Support
             </h2>
-            <p className="text-xl text-secondary-400 max-w-3xl mx-auto">
+              <p className="text-xl text-secondary-400 max-w-3xl mx-auto mb-8">
               Need personalized help? Our support team is ready to assist you.
             </p>
+              
+              <div className="flex flex-col md:flex-row justify-center gap-8 mb-12">
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold text-secondary-500 mb-2">General Inquiries</h3>
+                  <a href="mailto:contact@aioscompanion.com" className="text-primary-500 hover:underline">
+                    contact@aioscompanion.com
+                  </a>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold text-secondary-500 mb-2">Sales</h3>
+                  <a href="mailto:sales@aioscompanion.com" className="text-primary-500 hover:underline">
+                    sales@aioscompanion.com
+                  </a>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold text-secondary-500 mb-2">Technical Support</h3>
+                  <a href="mailto:support@aioscompanion.com" className="text-primary-500 hover:underline">
+                    support@aioscompanion.com
+                  </a>
+                </div>
+              </div>
           </motion.div>
 
           <motion.div
@@ -325,12 +385,28 @@ const SupportPage = () => {
                     />
                   </div>
                   
+                    <div className="mt-8">
                   <button
                     type="submit"
-                    className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+                        className="w-full bg-brand hover:bg-brand-dark text-white font-bold py-5 px-8 rounded-lg transition-colors duration-300 text-lg flex items-center justify-center"
                   >
-                    Send Message
+                        <span>Send Message</span>
+                        <svg 
+                          className="ml-2 w-5 h-5" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24" 
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            strokeWidth={2} 
+                            d="M14 5l7 7m0 0l-7 7m7-7H3" 
+                          />
+                        </svg>
                   </button>
+                    </div>
                 </form>
               )}
             </div>
@@ -338,71 +414,9 @@ const SupportPage = () => {
         </section>
       </div>
     </div>
+      <Footer />
+    </>
   );
 };
-
-// FAQ categories
-const categories = [
-  { value: 'all' as CategoryType, label: 'All Categories' },
-  { value: 'general' as CategoryType, label: 'General' },
-  { value: 'installation' as CategoryType, label: 'Installation' },
-  { value: 'features' as CategoryType, label: 'Features' },
-  { value: 'billing' as CategoryType, label: 'Billing & Account' },
-  { value: 'troubleshooting' as CategoryType, label: 'Troubleshooting' }
-];
-
-// FAQ data
-const faqs = [
-  {
-    question: "How do I install Companion?",
-    answer: "Companion is currently in beta. Once you're approved for the beta program, you'll receive an email with download instructions and an activation code. Follow the step-by-step guide in the email to complete installation.",
-    category: "installation"
-  },
-  {
-    question: "Is Companion compatible with my operating system?",
-    answer: "Companion works on Windows 10/11, macOS 11.0 or later, and select Linux distributions (Ubuntu 20.04+, Debian 11+, and Fedora 34+). We're continuously expanding our OS support.",
-    category: "installation"
-  },
-  {
-    question: "Does Companion require an internet connection?",
-    answer: "While Companion processes data locally on your machine, an internet connection is required for initial setup, updates, and certain integrations. Most core functionality works offline, but some advanced features may require connectivity.",
-    category: "general"
-  },
-  {
-    question: "How secure is my data with Companion?",
-    answer: "Companion processes all data locally on your machine. Your files and information never leave your computer unless you explicitly configure integrations that require data sharing. We use industry-standard encryption for all communications and never store your personal data on our servers.",
-    category: "general"
-  },
-  {
-    question: "Can I customize automations in Companion?",
-    answer: "Yes! Companion allows you to create custom automations using a simple, no-code interface. You can define triggers, conditions, and actions to suit your specific needs. Our advanced users can also use our API to create more complex automations with code.",
-    category: "features"
-  },
-  {
-    question: "What applications does Companion integrate with?",
-    answer: "Companion integrates with over 2,700 applications including Google Workspace, Microsoft Office, Slack, Zoom, Notion, and many more. You can find the full list of integrations in our documentation.",
-    category: "features"
-  },
-  {
-    question: "How much does Companion cost after the beta period?",
-    answer: "We offer several pricing plans to meet different needs. Our basic plan starts at $29/month, with advanced plans offering more credits and features. Visit our pricing page for detailed information on all plans.",
-    category: "billing"
-  },
-  {
-    question: "Can I upgrade or downgrade my plan at any time?",
-    answer: "Yes, you can change your plan at any time. When upgrading, you'll get immediate access to the new plan's benefits. When downgrading, the change will take effect at the end of your current billing cycle.",
-    category: "billing"
-  },
-  {
-    question: "My automation isn't working as expected. What should I do?",
-    answer: "First, check our troubleshooting guide in the documentation. If that doesn't solve your issue, you can enable debug mode (Settings > Advanced > Enable Debug Mode) and send us the logs through the Help menu. Our support team will assist you as soon as possible.",
-    category: "troubleshooting"
-  },
-  {
-    question: "How do I update Companion to the latest version?",
-    answer: "Companion automatically checks for updates when you launch the application. You can also manually check for updates by going to Settings > About > Check for Updates. We recommend keeping your application updated to access the latest features and security improvements.",
-    category: "troubleshooting"
-  }
-];
 
 export default SupportPage; 
