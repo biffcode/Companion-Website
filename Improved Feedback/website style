@@ -1,0 +1,71 @@
+I'll create documentation text that adopts the theme and style of the AIOS Companion website, which you can use for another website. I'll focus on the content structure and styling approach.
+Here's the documentation text that adopts the AIOS Companion website's theme and style, which you can use for another website:
+
+## Documentation Structure
+
+### Main Sections
+1. **Introduction and Overview**
+   - Brief product description
+   - Key benefits and features
+   - Navigation to main documentation sections
+
+2. **Getting Started**
+   - System requirements (presented in a clean two-column layout)
+   - Installation steps (numbered with visual indicators)
+   - Initial setup process
+
+3. **User Manual**
+   - Feature-specific guides with visual icons
+   - Step-by-step instructions
+   - Use cases and examples
+
+4. **API Reference** (if applicable)
+   - Authentication information
+   - Endpoint documentation
+   - Code examples in syntax-highlighted blocks
+
+5. **FAQs**
+   - Common questions in collapsible cards
+   - Clear, concise answers
+
+6. **Support Information**
+   - Contact methods
+   - Community resources
+
+## Design Elements
+
+### Typography
+- Headings: Clean, medium weight with tight tracking
+  - Main headings: 3xl-5xl size (24-48px)
+  - Subheadings: 2xl size (24px)
+  - Section titles: xl size (20px)
+- Body text: Secondary color with 18px base size
+- Font family: System fonts with SF Pro Display as primary
+
+### Color Scheme
+- Primary: Warm orange (#D9643A) for CTAs and highlights
+- Secondary: Rich brown (#473A35) for text and headings
+- Neutrals: Clean grays for backgrounds and borders
+- Accent colors for status indicators (green, blue, amber, red)
+
+### UI Components
+- Cards with subtle rounded corners (15px radius)
+- Soft shadows on hover for interactive elements
+- Clean white backgrounds with minimal borders
+- Icon integration with text elements
+- Consistent spacing (margin and padding)
+
+### Interactive Elements
+- Buttons with rounded-full style and hover effects
+- Links with icon indicators for direction
+- Color-coded API method indicators
+- Pre-formatted code blocks with dark backgrounds
+
+## Content Style
+- Clear, direct language
+- Concise explanations
+- Step-by-step instructions
+- Visual hierarchy with proper heading levels
+- Consistent terminology throughout
+
+This documentation structure and styling approach creates a professional, modern look that emphasizes readability and usability while maintaining brand consistency.

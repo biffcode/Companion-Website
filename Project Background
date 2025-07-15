@@ -1,0 +1,146 @@
+# Companion AI Website Project Background
+
+## Project Overview
+We're building a complete website overhaul for Companion AI - a revolutionary native desktop AI assistant that operates computers directly through OS-level integration. This isn't just a website redesign; it's a strategic repositioning to transform a "NASA rocket in a rundown base" into a conversion-optimized platform that clearly communicates our unique value proposition.
+
+## The Problem We're Solving
+**Current Website Issues:**
+- Visitors can't quickly identify what Companion is (consulting company? AI agent? software agency?)
+- Information overload without clear user journey structure
+- Missing clear value proposition in hero section
+- Poor SEO optimization (missing key terms like "artificial intelligence")
+- No coherent flow from awareness to conversion
+- Technical features presented without business context
+
+**Business Impact:**
+- Low conversion rates despite innovative product
+- High bounce rates from confused visitors  
+- Ineffective lead generation
+- Poor search engine visibility
+- Unclear competitive positioning
+
+## Product Context
+**What Companion AI Actually Is:**
+- First native Windows AI assistant with direct OS access
+- Agentic framework supporting multiple LLMs (GPT, Claude, Gemini)
+- Computer automation tool that clicks, types, and navigates like humans
+- Works with 2,700+ Windows applications (not just API-limited tools)
+- Token optimization technology (40% savings vs direct API usage)
+- Personal context awareness and workflow learning
+
+**Key Differentiators:**
+- Native computer control vs browser-based limitations
+- Multi-AI framework vs single-model dependency  
+- Local processing vs cloud-only solutions
+- Direct application control vs API-only integrations
+
+## Target Audience Strategy
+**Primary (60%): Knowledge Workers & Professionals**
+- Pain: Drowning in repetitive computer tasks
+- Goal: Reclaim 10-20 hours weekly for high-value work
+- Examples: Consultants, analysts, project managers
+
+**Secondary (25%): Developers & Tech Teams**
+- Pain: Context switching between tools kills productivity  
+- Goal: Automate deployment, monitoring, documentation
+- Examples: Software engineers, DevOps, tech leads
+
+**Tertiary (15%): Business Owners & Entrepreneurs**
+- Pain: Manual processes limiting scale
+- Goal: Automate operations without hiring
+- Examples: E-commerce owners, solopreneurs
+
+## Website Architecture Strategy
+**"Babushka" Information Flow:**
+Each section expands the core thesis while being self-contained:
+
+1. **HERO**: Hook + Core Promise ("First AI that uses your computer")
+2. **PROOF**: Why we're different (USPs + differentiation)  
+3. **DEMO**: See it in action (video demonstrations)
+4. **BENEFITS**: What you gain (time/value recovery)
+5. **INTEGRATIONS**: Works with your tools (2,700+ apps)
+6. **USE CASES**: How others use it (audience-specific)
+7. **TRUST**: Social proof + team credibility
+8. **TECH**: How it works (optional technical dive)
+9. **PRICING**: Investment + ROI (value-focused)
+10. **FAQ**: Remove objections
+11. **CTA**: Multiple conversion paths
+
+## Content Strategy Requirements
+**SEO Optimization:**
+- Target 1,500+ words total across all sections
+- Include keywords: artificial intelligence, computer automation, agentic framework, AI assistant, workflow automation, computer use, tool use, MCP
+- Natural keyword integration without stuffing
+- Technical terms with business context
+
+**Conversion Optimization:**
+- Multiple CTAs with section-aware messaging
+- "Journalism 5 W's" principle (Who, What, When, Where, Why)
+- Progressive information revelation
+- Mobile-responsive design
+- Video integration with fallback options
+
+## Technical Implementation Notes
+**Performance Requirements:**
+- Page load under 3 seconds
+- Video autoplay with bandwidth consideration
+- Floating header with persistent download CTA
+- Progress indicators for user orientation
+
+**Tracking & Analytics:**
+- Video engagement metrics
+- Scroll depth by section
+- CTA click-through rates
+- Heat mapping on key conversion areas
+- A/B testing capability for headlines/CTAs
+
+## Competitive Positioning
+**Against Browser-Based AI Tools:**
+- Emphasize native OS access vs browser limitations
+- Highlight direct application control vs API dependencies
+- Demonstrate universal compatibility (2,700+ apps)
+
+**Against ChatGPT/Claude Direct:**
+- Focus on automation vs manual copy/paste
+- Show integrated workflow vs isolated conversations
+- Prove cost savings through token optimization
+
+**Against Automation Tools (Zapier, etc.):**
+- Native computer control vs limited API connections
+- AI-powered intelligence vs rule-based automation
+- Personal context awareness vs generic triggers
+
+## Success Metrics
+**Primary KPIs:**
+- Conversion rate from visitor to trial signup
+- Time on page and scroll depth
+- Video engagement rates
+- Trial-to-paid conversion improvement
+
+**Secondary KPIs:**
+- Organic search traffic growth
+- Bounce rate reduction
+- User journey completion rates
+- Social sharing and referral traffic
+
+## Brand Voice & Messaging
+**Tone**: Professional but approachable, innovative but trustworthy
+**Core Message**: "Stop doing what computers should do for you"
+**Value Props**: Time savings, universal compatibility, intelligent automation
+**Differentiator**: "First AI that actually uses your computer like you do"
+
+## Development Approach
+**Iterative Strategy:**
+1. Build core structure with placeholder content
+2. Implement section-by-section with real content
+3. Add interactive elements (videos, demos, calculators)
+4. Optimize for performance and conversion
+5. A/B test key elements
+
+**Technology Stack Considerations:**
+- Fast loading framework (Next.js recommended)
+- Video optimization and lazy loading
+- Mobile-first responsive design
+- SEO-friendly architecture
+- Analytics integration
+- Form handling for lead capture
