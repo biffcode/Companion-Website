@@ -34,7 +34,7 @@
 
 @layer components {
   .container {
-    @apply px-4 mx-auto max-w-[70%];
+    @apply px-6 sm:px-6 lg:px-8 mx-auto max-w-full sm:max-w-[90%] lg:max-w-[80%] xl:max-w-[70%];
   }
 
   .btn {

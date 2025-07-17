@@ -21,10 +21,12 @@ const CtaMomentum = () => {
           className="text-center max-w-3xl mx-auto"
         >
           <h3 className="text-2xl font-bold text-title mb-4">
-            Ready to Automate Your First Task?
+            Ready to Automate<br className="sm:hidden" />
+            <span className="hidden sm:inline"> </span>Your First Task?
           </h3>
           <p className="text-lg text-text-secondary mb-6">
-            Join thousands already saving 15+ hours per week
+            Join thousands already saving<br className="sm:hidden" />
+            <span className="hidden sm:inline"> </span>15+ hours per week
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">

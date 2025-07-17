@@ -16,7 +16,7 @@ const plans = [
       'Community Support',
     ],
     cta: 'Try for Free',
-    popular: true,
+    popular: false,
   },
   {
     name: 'Basic',
@@ -42,7 +42,7 @@ const plans = [
       'Priority Email Support',
     ],
     cta: 'Subscribe Now',
-    popular: false,
+    popular: true,
   },
   {
     name: 'Pro',
@@ -81,7 +81,7 @@ const PricingSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -90,37 +90,37 @@ const PricingSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`relative rounded-lg overflow-hidden transform transition-transform duration-300 h-full flex flex-col ${
                 plan.popular
-                  ? 'border-2 border-brand shadow-medium scale-105'
+                  ? 'border-2 border-brand shadow-medium lg:scale-105'
                   : 'border border-neutral-200 shadow-soft'
               }`}
             >
               {plan.popular && (
-                <div className="absolute top-0 right-0 bg-brand text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                <div className="absolute top-0 right-0 bg-brand text-white text-xs font-bold px-2 sm:px-3 py-1 rounded-bl-lg">
                   GET NOW!
                 </div>
               )}
               
-              <div className="p-6 bg-white flex flex-col h-full">
-                <h3 className="text-xl font-bold text-title mb-2">{plan.name}</h3>
-                <div className="flex items-baseline mb-6">
-                  <span className="text-3xl font-bold text-text-primary">{plan.price}</span>
-                  <span className="text-text-secondary ml-1">{plan.period}</span>
+              <div className="p-4 sm:p-6 bg-white flex flex-col h-full">
+                <h3 className="text-lg sm:text-xl font-bold text-title mb-2">{plan.name}</h3>
+                <div className="flex items-baseline mb-4 sm:mb-6">
+                  <span className="text-2xl sm:text-3xl font-bold text-text-primary">{plan.price}</span>
+                  <span className="text-text-secondary ml-1 text-sm sm:text-base">{plan.period}</span>
                 </div>
                 
-                <ul className="space-y-4 mb-8 flex-grow">
+                <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 flex-grow">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start">
-                      <svg className="w-5 h-5 text-brand mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-brand mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-text-secondary">{feature}</span>
+                      <span className="text-text-secondary text-sm sm:text-base">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 
                 <Link
                   href="/download"
-                  className={`w-full block text-center py-3 px-4 rounded-md transition-colors font-medium mt-auto ${
+                  className={`w-full block text-center py-2.5 sm:py-3 px-3 sm:px-4 rounded-md transition-colors font-medium mt-auto text-sm sm:text-base ${
                     plan.popular
                       ? 'btn-primary'
                       : 'bg-neutral-100 text-text-primary hover:bg-neutral-200'

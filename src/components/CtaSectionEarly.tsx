@@ -32,7 +32,7 @@ const CtaSectionEarly = () => {
               href="/download" 
               className="btn-primary text-lg px-8 py-4"
             >
-              Try Free - No Setup Required
+              Try Free
             </Link>
             <Link 
               href="#demo" 

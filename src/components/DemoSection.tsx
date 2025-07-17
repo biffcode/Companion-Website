@@ -71,6 +71,7 @@ const demos = [
 const DemoSection = () => {
   const [activeDemo, setActiveDemo] = useState(demos[0].id);
   const [expandedDemo, setExpandedDemo] = useState<string | null>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -81,6 +82,7 @@ const DemoSection = () => {
   const handleDemoClick = (demoId: string) => {
     setActiveDemo(demoId);
     setExpandedDemo(expandedDemo === demoId ? null : demoId);
+    setIsDropdownOpen(false); // Close dropdown on mobile after selection
   };
 
   return (
@@ -95,7 +97,8 @@ const DemoSection = () => {
         >
           <h2 className="text-title mb-4">See Companion in Action</h2>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Watch real workflows automated in real-time
+            Watch real workflows automated <br className="sm:hidden" />
+            <span className="hidden sm:inline"> </span>in real-time
           </p>
         </motion.div>
 
@@ -145,30 +148,74 @@ const DemoSection = () => {
           <div className="lg:col-span-5 order-1 lg:order-2">
             <div className="bg-white rounded-lg shadow-medium p-4">
               <h3 className="text-lg font-bold text-title mb-4">Use Cases</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
-                {demos.map((demo) => (
-                  <button
-                    key={demo.id}
-                    onClick={() => handleDemoClick(demo.id)}
-                    className={`text-left p-3 rounded-lg transition-all ${
-                      activeDemo === demo.id
-                        ? 'bg-brand text-white shadow-sm'
-                        : 'bg-neutral-50 hover:bg-neutral-100'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <h4 className={`font-medium ${
-                        activeDemo === demo.id ? 'text-white' : 'text-title'
-                      }`}>
-                        {demo.title}
-                      </h4>
-                      {activeDemo === demo.id && (
-                        <div className="w-2 h-2 rounded-full bg-white"></div>
-                      )}
-                    </div>
-                  </button>
-                ))}
+              
+              {/* Mobile Dropdown */}
+              <div className="lg:hidden relative">
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="w-full text-left p-3 bg-brand text-white rounded-lg flex items-center justify-between"
+                >
+                  <span className="font-medium">{activeDemoData?.title}</span>
+                  {isDropdownOpen ? (
+                    <IoChevronUp className="w-5 h-5" />
+                  ) : (
+                    <IoChevronDown className="w-5 h-5" />
+                  )}
+                </button>
+                
+                <AnimatePresence>
+                  {isDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 right-0 mt-1 bg-white border border-neutral-200 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto"
+                    >
+                      {demos.map((demo) => (
+                        <button
+                          key={demo.id}
+                          onClick={() => handleDemoClick(demo.id)}
+                          className={`w-full text-left p-3 hover:bg-neutral-50 transition-colors first:rounded-t-lg last:rounded-b-lg ${
+                            activeDemo === demo.id ? 'bg-neutral-100 font-medium' : ''
+                          }`}
+                        >
+                          <span className="text-title">{demo.title}</span>
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
+
+              {/* Desktop Grid */}
+              <div className="hidden lg:block">
+                <div className="grid grid-cols-1 gap-2">
+                  {demos.map((demo) => (
+                    <button
+                      key={demo.id}
+                      onClick={() => handleDemoClick(demo.id)}
+                      className={`text-left p-3 rounded-lg transition-all ${
+                        activeDemo === demo.id
+                          ? 'bg-brand text-white shadow-sm'
+                          : 'bg-neutral-50 hover:bg-neutral-100'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <h4 className={`font-medium ${
+                          activeDemo === demo.id ? 'text-white' : 'text-title'
+                        }`}>
+                          {demo.title}
+                        </h4>
+                        {activeDemo === demo.id && (
+                          <div className="w-2 h-2 rounded-full bg-white"></div>
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
               <a 
                 href="https://www.youtube.com/@companionbyaios" 
                 target="_blank" 

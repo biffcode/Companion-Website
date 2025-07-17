@@ -96,7 +96,7 @@ const TimeValueSection = () => {
                   type="range"
                   id="hourly-rate"
                   min="10"
-                  max="500"
+                  max="100"
                   step="1"
                   value={hourlyRate}
                   onChange={(e) => setHourlyRate(parseInt(e.target.value))}
@@ -104,7 +104,7 @@ const TimeValueSection = () => {
                 />
                 <div className="flex justify-between text-sm text-text-secondary mt-2">
                   <span>$10</span>
-                  <span>$500</span>
+                  <span>$100</span>
                 </div>
               </div>
             </div>
@@ -168,7 +168,7 @@ const TimeValueSection = () => {
                 </div>
                 <div>
                   <div className="text-sm text-text-secondary">Return on Investment</div>
-                  <div className="text-lg font-medium text-text-primary">Whether you earn $10 or $500 an hour, you'll see real return on time saved — faster than you'd expect.</div>
+                  <div className="text-lg font-medium text-text-primary">Whether you earn $10 or $100 an hour, you'll see real return on time saved — faster than you'd expect.</div>
                 </div>
               </div>
             </div>
